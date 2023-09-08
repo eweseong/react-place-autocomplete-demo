@@ -7,7 +7,8 @@ import Map from '../features/map/map';
 import PlaceAutocomplete from '../features/place-autocomplete/place-autocomplete';
 import styles from './app.module.scss';
 
-const { mapApiKey, mapCenter, mapId } = configs;
+const parameters = new URLSearchParams(window.location.search);
+const { mapApiKey = parameters.get('apiKey'), mapCenter, mapId = parameters.get('mapId') ?? '' } = configs;
 
 export function App() {
   // use JavaScript API instead of web service because AutoComplete API doesn't support CORS as mentioned here https://issuetracker.google.com/issues/35827564
